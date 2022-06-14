@@ -40,7 +40,7 @@ const employees = (Component:React.ComponentType<Props>) => (props: React.PropsW
 
     const deleteEmployee = async (id: string) => {
         await service.deleteEmployee(id);
-        setEmployees(employees => employees.filter(e => e._id === id))
+        setEmployees(employees => employees.filter(e => e._id !== id))
     }
 
     const updateEmployee = async (id:string,employee:EmployeeType) => {
