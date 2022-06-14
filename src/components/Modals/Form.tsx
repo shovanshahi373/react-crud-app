@@ -14,36 +14,26 @@ const fData = {
     city: "",
     zipCode:"",
     addressLine1:"",
-    adderssLine2:""
+    addressLine2:""
   }
 }
 
-// interface FormData {
-//   name: string
-//   email:string
-//   phoneNumber: string
-//   homeAddress: Address
-//   dateOfEmployment: string
-//   dateOfBirth: string
-// }
-
 const Form = ({onConfirm,onReject,formData}:any,ref: any) => {
-  console.log({formData})
-  const {homeAddress:{city,zipCode,addressLine1,adderssLine2},...others} = formData ?? fData;
+  const {homeAddress:{city,zipCode,addressLine1,addressLine2},...others} = formData ?? fData;
   return (
     <Modal ref={ref}>
         <div>
           <Formik
-            initialValues={{ city,zipCode,addressLine1,adderssLine2,...others }}
+            initialValues={{ city,zipCode,addressLine1,addressLine2,...others }}
             onSubmit={values => {
-              const {city,zipCode,adderssLine2,addressLine1,...basic} = values;
+              const {city,zipCode,addressLine2,addressLine1,...basic} = values;
               const data = {
                 ...basic,
                 homeAddress: {
                   city,
                   zipCode,
                   addressLine1,
-                  adderssLine2
+                  addressLine2
                 }
               }
               onConfirm(data)
@@ -51,7 +41,7 @@ const Form = ({onConfirm,onReject,formData}:any,ref: any) => {
             validationSchema={Yup.object().shape({
               email: Yup.string().email().required("Required"),
               name: Yup.string().min(3,"too short"),
-              phoneNumber: Yup.string().matches(/^\+977(-)+\d{10}$/,"not correct format"),
+              phoneNumber: Yup.string().matches(/^\+977(-)?\d{10}$/,"not correct format"),
 
             }
             )}

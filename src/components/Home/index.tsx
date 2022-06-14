@@ -120,6 +120,7 @@ const Home = ({getEmployees,updateEmployee,createEmployee,deleteEmployee,page,to
                     getData={getEmployees}
                     />
                     <ConfirmModal 
+                    key={Math.random()}
                     ref={confirmModalRef} 
                     onConfirm={onConfirmDelete} 
                     onReject={onRejectDelete}
