@@ -271,9 +271,8 @@ const Form = ({onConfirm,onReject,formData}:any,ref: any) => {
                     type="button"
                     className="outline"
                     onClick={onReject}
-                    disabled={!dirty || isSubmitting}
                   >
-                    Reset
+                    Close
                   </button>
                   <button type="submit" disabled={isSubmitting}>
                     Submit
