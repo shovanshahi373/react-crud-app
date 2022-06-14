@@ -113,7 +113,7 @@ const Home = ({getEmployees,updateEmployee,createEmployee,deleteEmployee,page,to
         {
             loading ? "loading" : (
                 <React.Fragment>
-                    <small>Showing {employees.length} of {totalCount}.</small>
+                    {!!employees.length && <small>Showing {employees.length} of {totalCount}.</small>}
                     <AddEmployee onclickhandler={handleAdd} />
                     <Table 
                     dataSource={employees} 
