@@ -12,30 +12,31 @@ const fData = {
   dateOfEmployment: "",
   homeAddress: {
     city: "",
-    zipCode:"",
+    ZIPCode:"",
     addressLine1:"",
     addressLine2:""
   }
 }
 
 const Form = ({onConfirm,onReject,formData}:any,ref: any) => {
-  const {homeAddress:{city,zipCode,addressLine1,addressLine2},...others} = formData ?? fData;
+  const {homeAddress:{city,ZIPCode,addressLine1,addressLine2},...others} = formData ?? fData;
   return (
     <Modal ref={ref}>
         <div>
           <Formik
-            initialValues={{ city,zipCode,addressLine1,addressLine2,...others }}
+            initialValues={{ city,ZIPCode,addressLine1,addressLine2,...others }}
             onSubmit={values => {
-              const {city,zipCode,addressLine2,addressLine1,...basic} = values;
+              const {city,ZIPCode,addressLine2,addressLine1,...basic} = values;
               const data = {
                 ...basic,
                 homeAddress: {
                   city,
-                  zipCode,
+                  ZIPCode,
                   addressLine1,
                   addressLine2
                 }
               }
+              console.log(data);
               onConfirm(data)
             }}
             validationSchema={Yup.object().shape({
@@ -198,25 +199,25 @@ const Form = ({onConfirm,onReject,formData}:any,ref: any) => {
                   </div>
 
                   <div>
-                    <label htmlFor="zipCode" style={{ display: "block" }}>
+                    <label htmlFor="ZIPCode" style={{ display: "block" }}>
                       Zip Code
                     </label>
                     <input
-                      id="zipCode"
+                      id="ZIPCode"
                       placeholder="Enter your zip code..."
                       type={'text'}
-                      value={values.zipCode}
+                      value={values.ZIPCode}
                       onChange={handleChange}
                       onBlur={handleBlur}
                       className={
-                        errors.zipCode && touched.zipCode
+                        errors.ZIPCode && touched.ZIPCode
                           ? "text-input error"
                           : "text-input"
                       }
                     />
-                    {errors.zipCode && touched.zipCode && (
+                    {errors.ZIPCode && touched.ZIPCode && (
                       // @ts-ignore
-                      <div className="input-feedback">{errors.zipCode}</div>
+                      <div className="input-feedback">{errors.ZIPCode}</div>
                     )}
                   </div>
 
