@@ -62,7 +62,7 @@ const employees = (Component:React.ComponentType<Props>) => (props: React.PropsW
     const createEmployee = async (employee: EmployeeDetails) => {
         try {
             const data = await service.createEmployee(employee);
-            setEmployees(employees => [data,...employees])
+            setEmployees(employees => [...employees,data])
         }catch(error) {
             console.log(error)
         }
